@@ -10,6 +10,8 @@ if __name__ == '__main__':
 
 import collections
 
+from django.db import transaction
+
 import nextbus.models
 import nextbus.api
 
@@ -18,6 +20,7 @@ def sync_agencies():
         print "\nAgency: %s" % (agency, )
         sync_agency(agency.name)
 
+@transaction.commit_on_success
 def sync_agency(agency):
     counter = collections.defaultdict(lambda: 0)
 

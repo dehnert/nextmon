@@ -10,9 +10,12 @@ if __name__ == '__main__':
 
 import datetime
 
+from django.db import transaction
+
 import nextbus.models
 import nextbus.api
 
+@transaction.commit_on_success
 def gather_predictions(agency):
     routes = nextbus.models.NBRoute.objects.filter(agency__name=agency, )
     routes_stops = []
