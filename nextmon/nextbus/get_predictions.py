@@ -49,7 +49,6 @@ def gather_predictions(agency):
             dj_pred.seconds = None
             dj_pred.arrival_time = None
         else:
-            print "Processing predictions for %s on %s" % (route, stop, )
             direction = directions[0]
             assert len(direction) > 0, "No predictions found for %s on %s" % (route, stop, )
             dj_pred.seconds = 999999999999
@@ -65,6 +64,5 @@ def gather_predictions(agency):
 
 if __name__ == '__main__':
     for agency in nextbus.models.NBAgency.objects.all():
-        print "\nAgency: %s" % (agency, )
         gather_predictions(agency.name)
 
