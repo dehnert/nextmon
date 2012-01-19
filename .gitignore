@@ -1,3 +1,4 @@
 *.pyc
 .*.swp
 nextmon.sqlite
+/nextmon/settings/local.py
