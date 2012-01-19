@@ -1,0 +1,11 @@
+Django app (mostly for the ORM) to store historical NextBus data.
+
+The eventual goal is to be able to answer questions like:
+* How much of the time does NextBus have data?
+* How closely does actual bus performance match scheduled bus performance?
+* How closely does NextBus's predictions (like ten minutes before the bus
+  arrives) match with actual arrival times (as measured by when NextBus
+  prediction goes from near zero to high, or by non-NextBus data)?
+
+The idea is just to store All The Data and make it available, and do analysis
+offline.
