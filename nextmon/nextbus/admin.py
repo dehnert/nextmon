@@ -21,7 +21,11 @@ class Admin_PredictionCycle(admin.ModelAdmin):
     list_display = ( 'id', 'time', )
 admin.site.register(nextbus.models.PredictionCycle, Admin_PredictionCycle)
 
+def format_arrival_time(pred):
+    return str(pred.arrival_time)
+format_arrival_time.admin_order_field = 'arrival_time'
+
 class Admin_NBPrediction(admin.ModelAdmin):
-    list_display = ( 'route', 'stop', 'cycle', 'seconds', 'arrival_time', )
+    list_display = ( 'route', 'stop', 'cycle', format_arrival_time, 'seconds', )
 admin.site.register(nextbus.models.NBPrediction, Admin_NBPrediction)
 
