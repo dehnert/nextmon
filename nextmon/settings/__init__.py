@@ -59,6 +59,8 @@ STATIC_URL = '/static/'
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
 if ON_SCRIPTS:
     ADMIN_MEDIA_PREFIX = '/__scripts/django/media/'
+    # This will need to be... something else... if we start using static files ourselves...
+    STATIC_URL = '/__scripts/django/static/'
 else:
     ADMIN_MEDIA_PREFIX = '/static/admin/'
 
