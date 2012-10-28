@@ -27,5 +27,7 @@ format_arrival_time.admin_order_field = 'arrival_time'
 
 class Admin_NBPrediction(admin.ModelAdmin):
     list_display = ( 'route', 'stop', 'cycle', format_arrival_time, 'seconds', )
+    list_filter = ['route', 'stop', ]
+    search_fields = [ 'route_tag', 'stop__tag', ]
 admin.site.register(nextbus.models.NBPrediction, Admin_NBPrediction)
 
