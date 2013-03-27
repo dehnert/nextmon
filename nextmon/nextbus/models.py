@@ -40,7 +40,7 @@ class NBRoute(models.Model):
         return u"<Route: %s.%s>" % (self.agency.name, self.tag, )
 
 class PredictionCycle(models.Model):
-    time = models.DateTimeField(default=datetime.datetime.now)
+    time = models.DateTimeField(default=datetime.datetime.now, db_index=True, )
 
     def __unicode__(self, ):
         return u"<Cycle: %d: %s>" % (self.pk, self.time, )
