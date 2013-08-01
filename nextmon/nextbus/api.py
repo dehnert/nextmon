@@ -5,6 +5,13 @@ from StringIO import StringIO
 
 base_url = "http://webservices.nextbus.com/service/publicXMLFeed"
 
+enable_debug = True
+enable_debug = False
+
+def debug(string):
+    if enable_debug:
+        print string
+
 def query(command, agency, args):
     all_args = [
         ('command', command, ),
@@ -12,6 +19,8 @@ def query(command, agency, args):
     ]
     all_args.extend(args)
     data = urllib.urlencode(all_args)
+    url = base_url + '?' + data
+    debug("URL for %s: %s" % (command, url, ))
     fd = urllib.urlopen(base_url + '?' + data)
     result = etree.parse(fd).getroot()
     error = result.find('./Error')

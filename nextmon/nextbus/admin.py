@@ -18,7 +18,7 @@ class Admin_NBStop(admin.ModelAdmin):
 admin.site.register(nextbus.models.NBStop, Admin_NBStop)
 
 class Admin_PredictionCycle(admin.ModelAdmin):
-    list_display = ( 'id', 'time', )
+    list_display = ( 'id', 'effective_date', 'time', )
 admin.site.register(nextbus.models.PredictionCycle, Admin_PredictionCycle)
 
 def format_arrival_time(pred):

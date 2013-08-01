@@ -117,6 +117,7 @@ INSTALLED_APPS = (
     'south',
 
     'nextbus',
+    'stats',
 )
 
 # A sample logging configuration. The only tangible logging

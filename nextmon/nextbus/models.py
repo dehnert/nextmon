@@ -2,6 +2,8 @@ import datetime
 
 from django.db import models
 
+DAY_START_OFFSET = datetime.timedelta(hours=6)
+
 class NBAgency(models.Model):
     name = models.SlugField()
 
@@ -41,6 +43,12 @@ class NBRoute(models.Model):
 
 class PredictionCycle(models.Model):
     time = models.DateTimeField(default=datetime.datetime.now, db_index=True, )
+    effective_date = models.DateField(db_index=True, )
+
+    def save(self, ):
+        if not self.effective_date:
+            self.effective_date = (self.time - DAY_START_OFFSET).date()
+        super(PredictionCycle, self).save()
 
     def __unicode__(self, ):
         return u"<Cycle: %d: %s>" % (self.pk, self.time, )
