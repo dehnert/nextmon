@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Summary</title>
+</head>
+
+<body>
+<h1>Summary</h1>
+
+<form action="" method="get">
+    {{ filter.form.as_p }}
+    <input type="submit" />
+</form>
+<table>
+<tr>
+    <th>Day</th>
+    <th>Route</th>
+    <th>Stop</th>
+    <th>Attempts to get a prediction</th>
+    <th>Predictions</th>
+    <th>Predictions of at most 10 minutes</th>
+    <th>Predictions of at most 4 minutes</th>
+</tr>
+{% for obj in filter %}
+<tr>
+    <td>{{obj.day}}</td>
+    <td>{{obj.route}}</td>
+    <td>{{obj.stop}}</td>
+    <td>{{obj.num_checks}}</td>
+    <td>{{obj.num_predictions}}</td>
+    <td>{{obj.num_less_10min}}</td>
+    <td>{{obj.num_less_4min}}</td>
+</tr>
+{% endfor %}
+</table>
+
+</body>
+</html>
