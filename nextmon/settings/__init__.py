@@ -7,7 +7,7 @@ SITE_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), '..'))
 DEBUG = False
 
 ADMINS = (
-    ('NextMon team', 'nextmon@mit.edu', ),
+    ('NextMon team', 'nextmon-auto@mit.edu', ),
 )
 
 MANAGERS = ADMINS
