@@ -21,7 +21,9 @@ class StatFilter(django_filters.FilterSet):
 
 def summary(request, ):
     f = StatFilter(request.GET, queryset=nextmon.stats.models.DailySummary.objects.all())
+    render_results = 'route' in request.GET
     context = {
         'filter': f,
+        'render_results': render_results,
     }
     return render_to_response('stats/summary.html', context, context_instance=RequestContext(request), )

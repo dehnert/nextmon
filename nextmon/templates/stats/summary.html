@@ -10,6 +10,7 @@
     {{ filter.form.as_p }}
     <input type="submit" />
 </form>
+{% if render_results %}
 <table>
 <tr>
     <th>Day</th>
@@ -31,6 +32,7 @@
     <td>{{obj.num_less_4min}}</td>
 </tr>
 {% endfor %}
+{% endif %}
 </table>
 
 </body>
