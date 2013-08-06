@@ -83,4 +83,4 @@ class DailySummary(models.Model):
             summary = cls.ensure_summary(entries, day)
             summary.num_less_4min = day['stat']
 
-        cls.objects.bulk_create(entries.values())
+        cls.objects.bulk_create(entries.values(), batch_size=1000)
