@@ -10,17 +10,20 @@ import nextmon.nextbus.models
 import nextmon.stats.models
 
 class StatFilter(django_filters.FilterSet):
-    day = django_filters.DateRangeFilter()
+    start_day= django_filters.DateFilter(name="day", lookup_type="gte")
+    end_day = django_filters.DateFilter(name="day", lookup_type="lte")
     route = django_filters.ModelChoiceFilter(queryset=nextmon.nextbus.models.NBRoute.objects)
     stop = django_filters.ModelChoiceFilter(queryset=nextmon.nextbus.models.NBStop.objects)
 
     class Meta:
         model = nextmon.stats.models.DailySummary
-        fields = ['day', 'route', 'stop', ]
+        fields = ['start_day', 'end_day', 'route', 'stop', ]
+        order_by = ['day', 'route', 'stop', ]
 
 
 def summary(request, ):
-    f = StatFilter(request.GET, queryset=nextmon.stats.models.DailySummary.objects.all())
+    qs = nextmon.stats.models.DailySummary.objects.order_by('day')
+    f = StatFilter(request.GET, queryset=qs)
     render_results = 'route' in request.GET
     context = {
         'filter': f,
